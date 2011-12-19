@@ -13,11 +13,10 @@ WriteMakefile(
 
 	'BUILD_REQUIRES'    => { 
 		'Test::More'      => '0',
-		'Module::Release' => '0',
         },
 	'PREREQ_PM'    => { 
-		'Module::Release' => '0',
-		},
+		'Module::Release' => '2.05_05',
+	},
 
 	'PM'           => {
 		'lib/Git.pm'         => '$(INST_LIBDIR)/Git.pm',

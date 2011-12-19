@@ -7,6 +7,7 @@ use Test::More 'no_plan';
 my $class  = 'Module::Release::Git';
 my $method = 'vcs_tag';
 
+use_ok( 'Module::Release' );
 use_ok( $class );
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -27,13 +28,14 @@ sub AUTOLOAD { "" }
 
 package main;
 no warnings qw(redefine once);
-*Module::Release::Git::run         = sub { $main::run_output = $_[1] };
-*Module::Release::Git::remote_file = sub { $_[0]->{remote_file} };
-*Module::Release::Git::_warn       = sub { 1 };
-*Module::Release::Git::_print      = sub { 1 };
+*Module::Release::run         = sub { $main::run_output = $_[1] };
+*Module::Release::remote_file = sub { $_[0]->{remote_file} };
+*Module::Release::_warn       = sub { 1 };
+*Module::Release::_print      = sub { 1 };
 }
 
-my $release = bless {}, $class;
+my $release = Module::Release->new;
+$release->load_mixin($class);
 can_ok( $release, $method );
 
 

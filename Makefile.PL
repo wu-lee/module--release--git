@@ -10,11 +10,13 @@ WriteMakefile(
 	'VERSION_FROM' => 'lib/Git.pm',
 	'LICENSE'      => 'perl',
 	'AUTHOR'       => 'brian d foy <bdfoy@gmail.com>',
-	
-	'PREREQ_PM'    => { 
+
+	'BUILD_REQUIRES'    => { 
 		'Test::More'      => '0',
 		'Module::Release' => '0',
-		
+        },
+	'PREREQ_PM'    => { 
+		'Module::Release' => '0',
 		},
 
 	'PM'           => {
